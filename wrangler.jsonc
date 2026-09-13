@@ -2,6 +2,9 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "veronica-demo",
   "main": "src/index.ts",
+  "routes": [
+    { "pattern": "veronica.adayinthepark.ltd", "custom_domain": true },
+  ],
   "compatibility_date": "2026-09-08",
   "assets": {
     "directory": "./dist",
@@ -13,5 +16,8 @@
     "bindings": [{ "name": "CONTROL", "class_name": "ControlRoom" }],
   },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["ControlRoom"] }],
-  "observability": { "enabled": true },
+  "observability": {
+    "enabled": true,
+    "traces": { "enabled": true, "head_sampling_rate": 0.1 },
+  },
 }
